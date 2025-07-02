@@ -1,9 +1,15 @@
-
+import allure
+from allure_commons.types import Severity
 from selene import browser
 from data.user import User
 from qa_guru_homework4_test.registration_page import RegistrationForm
 
-
+@allure.tag("web")
+@allure.severity(Severity.BLOCKER)
+@allure.label("owner", "nlevusenkov")
+@allure.feature("Заполнение формы")
+@allure.story("Заполнение формы")
+@allure.link("https://demoqa.com/automation-practice-form", name="Форма регистрации")
 def test_form_selene_1(setting_browser):
     form_registration = RegistrationForm()
     browser.open('/')
@@ -11,9 +17,11 @@ def test_form_selene_1(setting_browser):
         first_name = 'John',
         last_name =  'Doe',
         email = 'test@test.ru',
-        gender = 'Male',
+        gender = 'Female',
         userNumber = '7999999999',
-        DateBithday = '10 May,2000',
+        day='10',
+        month='May',
+        year='2000',
         subjects = 'English',
         Hobbies = 'Reading',
         uploadPicture = 'fabula-ai.png',

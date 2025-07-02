@@ -5,7 +5,9 @@ class User:
     last_name: str
     email: str
     userNumber: int
-    DateBithday: str
+    year: int
+    month: str
+    day: str
     gender: str
     subjects: str
     uploadPicture: str
@@ -13,3 +15,7 @@ class User:
     CurrentAddress: str
     state: str
     city: str
+
+    @property
+    def DateBithday(self):
+        return f"{int(self.day)} {self.month},{self.year}"
