@@ -9,6 +9,7 @@ def setting_browser():
     options.page_load_strategy = 'eager'
 
     capabilities = {
+        "browserVersion": "128.0",
         "browserName": "chrome",
         "selenoid:options": {
             "enableVideo": False
