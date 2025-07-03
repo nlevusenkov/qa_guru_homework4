@@ -17,6 +17,12 @@ def setting_browser():
         options=options
     )
 
-    yield driver
+    browser_driver = Browser(Config(
+        driver=driver,
+        window_width=1920,
+        window_height=1329,
+    ))
 
-    driver.quit()
+    yield browser_driver
+
+    browser_driver.quit()
