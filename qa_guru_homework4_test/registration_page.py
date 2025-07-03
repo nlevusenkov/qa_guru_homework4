@@ -82,7 +82,7 @@ class RegistrationForm:
         self.fill_date_of_birth(user)
         self.select_gender(user)
         self.select_subject(user)
-        # time.sleep(0.5)
+        time.sleep(0.5)
         self.select_hobby(user)
         self.upload_picture(user)
         self.fill_address(user)

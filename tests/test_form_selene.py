@@ -14,6 +14,7 @@ from qa_guru_homework4_test.registration_page import RegistrationForm
 @allure.link("https://demoqa.com/automation-practice-form", name="Форма регистрации")
 def test_form_selene(setting_browser):
     form_registration = RegistrationForm()
+    browser.config.driver = setting_browser
     browser.open('https://demoqa.com/automation-practice-form')
     Nikita = User(
         first_name = 'John',
