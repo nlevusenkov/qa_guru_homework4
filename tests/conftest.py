@@ -10,7 +10,6 @@ def setting_browser():
 
     capabilities = {
         "browserName": "chrome",
-        "browserVersion": "128.0",
         "selenoid:options": {
             "enableVideo": False
         }
@@ -18,14 +17,16 @@ def setting_browser():
     options.set_capability("selenoid:options", capabilities["selenoid:options"])
 
     driver = webdriver.Remote(
-        command_executor="https://selenoid.autotests.cloud/wd/hub",
+        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
 
-    browser = Browser(Config(driver=driver,
-                             base_url='https://demoqa.com/automation-practice-form',
-                             window_width=1920,
-                             window_height=1080))
+    # Создание браузера с нужной конфигурацией
+    browser = Browser(Config(
+        driver=driver,
+        window_width=1920,
+        window_height=1080,
+    ))
 
     yield browser
     browser.quit()
