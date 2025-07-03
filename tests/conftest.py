@@ -1,28 +1,31 @@
 import pytest
-from selene import Browser, Config
+from selene import Browser, Config, browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope='function')
-def setting_browser():
-    options = Options()
-
-    options.set_capability("browserName", "chrome")
-    options.set_capability("browserVersion", "128.0")
-    options.set_capability("selenoid:options", {"enableVideo": False})
-
+def setting_browser(request):
+    # options = Options()
+    options = webdriver.ChromeOptions()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "128.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": True,
+            "enableLog": True
+        },
+        "goog:loggingPrefs": {"browser": "ALL"}
+    }
+    options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
+    browser.config.driver = driver
+    browser.config.driver.maximize_window()
 
-    browser_driver = Browser(Config(
-        driver=driver,
-        window_width=1920,
-        window_height=1080,
-    ))
+    yield browser
 
-    yield browser_driver
-
-    browser_driver.quit()
+    browser.quit()
