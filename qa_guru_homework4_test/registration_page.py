@@ -25,8 +25,8 @@ class RegistrationForm:
             browser.all('[name=gender]').element_by(have.value(user.gender)).element('./following-sibling::label').click()
     @allure.step("Заполнение номера телефона")
     def fill_phone_number(self, user):
-        with allure.step(f"Вводим номер телефона: {user.userNumber}"):
-            browser.element('#userNumber').type(user.userNumber)
+        with allure.step(f"Вводим номер телефона: {user.user_number}"):
+            browser.element('#userNumber').type(user.user_number)
 
     @allure.step("Заполнение даты рождения")
     def fill_date_of_birth(self, user):
@@ -45,19 +45,19 @@ class RegistrationForm:
 
     @allure.step("Выбор хобби")
     def select_hobby(self, user):
-        with allure.step(f"Выбрали предмет: {user.Hobbies}"):
-            browser.all('label.custom-control-label').element_by(have.text(user.Hobbies)).click()
+        with allure.step(f"Выбрали предмет: {user.hobbies}"):
+            browser.all('label.custom-control-label').element_by(have.text(user.hobbies)).click()
 
     @allure.step("Загрузка изображения")
     def upload_picture(self, user):
-        with allure.step(f"Загрузили изображение: {user.uploadPicture}"):
+        with allure.step(f"Загрузили изображение: {user.upload_picture}"):
             image_dir = '../image'
-            image_path = os.path.abspath(os.path.join(image_dir, user.uploadPicture))
+            image_path = os.path.abspath(os.path.join(image_dir, user.upload_picture))
             browser.element('#uploadPicture').send_keys(image_path)
     @allure.step("Заполнение адреса")
     def fill_address(self, user):
-        with allure.step(f"Выбрали адрес: {user.CurrentAddress}"):
-            browser.element('[placeholder="Current Address"').type(user.CurrentAddress)
+        with allure.step(f"Выбрали адрес: {user.current_address}"):
+            browser.element('[placeholder="Current Address"').type(user.current_address)
 
     @allure.step("Выбор штата")
     def select_state(self, user):
@@ -103,23 +103,23 @@ class RegistrationForm:
         with allure.step(f"Проверка пола: {user.gender}"):
             rows[2].should(have.exact_text(user.gender))
 
-        with allure.step(f"Проверка номера телефона: {user.userNumber}"):
-            rows[3].should(have.exact_text(user.userNumber))
+        with allure.step(f"Проверка номера телефона: {user.user_number}"):
+            rows[3].should(have.exact_text(user.user_number))
 
-        with allure.step(f"Проверка даты рождения: {user.DateBithday}"):
-            rows[4].should(have.exact_text(user.DateBithday))
+        with allure.step(f"Проверка даты рождения: {user.date_birthday}"):
+            rows[4].should(have.exact_text(user.date_birthday))
 
         with allure.step(f"Проверка предметов: {user.subjects}"):
             rows[5].should(have.exact_text(user.subjects))
 
-        with allure.step(f"Проверка хобби: {user.Hobbies}"):
-            rows[6].should(have.exact_text(user.Hobbies))
+        with allure.step(f"Проверка хобби: {user.hobbies}"):
+            rows[6].should(have.exact_text(user.hobbies))
 
-        with allure.step(f"Проверка имени загруженной картинки: {user.uploadPicture}"):
-            rows[7].should(have.exact_text(user.uploadPicture))
+        with allure.step(f"Проверка имени загруженной картинки: {user.upload_picture}"):
+            rows[7].should(have.exact_text(user.upload_picture))
 
-        with allure.step(f"Проверка адреса: {user.CurrentAddress}"):
-            rows[8].should(have.exact_text(user.CurrentAddress))
+        with allure.step(f"Проверка адреса: {user.current_address}"):
+            rows[8].should(have.exact_text(user.current_address))
 
         with allure.step(f"Проверка региона и города: {user.state} {user.city}"):
             rows[9].should(have.exact_text(f'{user.state} {user.city}'))

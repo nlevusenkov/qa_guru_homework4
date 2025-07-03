@@ -18,14 +18,14 @@ def test_form_selene_1(setting_browser):
         last_name =  'Doe',
         email = 'test@test.ru',
         gender = 'Female',
-        userNumber = '7999999999',
+        user_number = '7999999999',
         day='10',
         month='May',
         year='2000',
         subjects = 'English',
-        Hobbies = 'Reading',
-        uploadPicture = 'fabula-ai.png',
-        CurrentAddress = 'test',
+        hobbies = 'Reading',
+        upload_picture = 'fabula-ai.png',
+        current_address = 'test',
         state = 'Uttar Pradesh',
         city = 'Merrut'
     )

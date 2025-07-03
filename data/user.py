@@ -4,18 +4,18 @@ class User:
     first_name: str
     last_name: str
     email: str
-    userNumber: int
+    user_number: int
     year: int
     month: str
     day: str
     gender: str
     subjects: str
-    uploadPicture: str
-    Hobbies: str
-    CurrentAddress: str
+    upload_picture: str
+    hobbies: str
+    current_address: str
     state: str
     city: str
 
     @property
-    def DateBithday(self):
+    def date_birthday(self):
         return f"{int(self.day)} {self.month},{self.year}"
