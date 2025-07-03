@@ -4,7 +4,7 @@ from selene import Browser, Config
 
 
 @pytest.fixture(scope='function')
-def browser():
+def setting_browser():
     options = webdriver.ChromeOptions()
     options.page_load_strategy = 'eager'
 
