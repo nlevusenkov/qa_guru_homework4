@@ -1,12 +1,10 @@
 import pytest
-from selene import Browser, Config, browser
+from selene import browser
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope='function')
 def setting_browser(request):
-    # options = Options()
     options = webdriver.ChromeOptions()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -16,7 +14,6 @@ def setting_browser(request):
             "enableVideo": True,
             "enableLog": True
         },
-        "goog:loggingPrefs": {"browser": "ALL"}
     }
     options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
