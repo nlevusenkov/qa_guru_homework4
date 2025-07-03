@@ -9,8 +9,8 @@ def setting_browser():
     options.page_load_strategy = 'eager'
 
     capabilities = {
-        "browserVersion": "128.0",
         "browserName": "chrome",
+        "browserVersion": "128.0",
         "selenoid:options": {
             "enableVideo": False
         }
@@ -23,11 +23,7 @@ def setting_browser():
     )
 
     # Создание браузера с нужной конфигурацией
-    browser = Browser(Config(
-        driver=driver,
-        window_width=1920,
-        window_height=1080,
-    ))
+    browser = Browser(Config(driver=driver))
 
     yield browser
     browser.quit()
