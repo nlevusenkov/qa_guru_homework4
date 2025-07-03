@@ -29,8 +29,8 @@ def test_form_selene(setting_browser):
         hobbies = 'Reading',
         upload_picture = 'fabula-ai.png',
         current_address = 'test',
-        state = 'Uttar Pradesh',
-        city = 'Merrut'
+        state = 'NCR',
+        city = 'Delhi'
     )
     form_registration.user_registration(Nikita)
     form_registration.should_registreded_user_with(Nikita)
