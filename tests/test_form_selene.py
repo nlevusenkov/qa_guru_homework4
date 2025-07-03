@@ -10,7 +10,7 @@ from qa_guru_homework4_test.registration_page import RegistrationForm
 @allure.feature("Заполнение формы")
 @allure.story("Заполнение формы")
 @allure.link("https://demoqa.com/automation-practice-form", name="Форма регистрации")
-def test_form_selene_1(setting_browser):
+def test_form_selene(setting_browser):
     form_registration = RegistrationForm()
     browser.open('/')
     Nikita = User(
