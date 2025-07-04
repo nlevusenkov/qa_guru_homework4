@@ -51,7 +51,7 @@ class RegistrationForm:
     @allure.step("Загрузка изображения")
     def upload_picture(self, user):
         with allure.step(f"Загрузили изображение: {user.upload_picture}"):
-            image_dir = '../image'
+            image_dir = './image'
             image_path = os.path.abspath(os.path.join(image_dir, user.upload_picture))
             browser.element('#uploadPicture').send_keys(image_path)
     @allure.step("Заполнение адреса")
