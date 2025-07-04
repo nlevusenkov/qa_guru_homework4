@@ -50,9 +50,15 @@ class RegistrationForm:
 
     @allure.step("Загрузка изображения")
     def upload_picture(self, user):
+
         with allure.step(f"Загрузили изображение: {user.upload_picture}"):
-            image_dir = './image'
+            base_dir = os.path.dirname(os.path.abspath(__file__))  # путь до tests/
+            image_dir = os.path.join(base_dir, '..', 'image')  # ../image
             image_path = os.path.abspath(os.path.join(image_dir, user.upload_picture))
+
+            print(f'[DEBUG] Absolute image path: {image_path}')
+            assert os.path.exists(image_path), f'Файл не найден: {image_path}'
+
             browser.element('#uploadPicture').send_keys(image_path)
     @allure.step("Заполнение адреса")
     def fill_address(self, user):
