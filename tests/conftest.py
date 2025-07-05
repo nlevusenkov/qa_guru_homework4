@@ -23,9 +23,9 @@ def setting_browser(request):
     browser.config.driver = driver
     browser.config.driver.maximize_window()
 
+
+    yield browser
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_screenshot(browser)
-
-    yield browser
     browser.quit()
