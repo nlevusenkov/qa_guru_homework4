@@ -27,5 +27,5 @@ def setting_browser(request):
 
     yield browser
     attach.add_screenshot(browser)
-    attach.add_screenshot(browser)
+    attach.add_video(browser)
     browser.quit()
