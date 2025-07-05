@@ -1,6 +1,6 @@
 import time
 import allure
-from selene import browser, have
+from selene import browser, have, command
 import os
 
 
@@ -46,7 +46,9 @@ class RegistrationForm:
     @allure.step("Выбор хобби")
     def select_hobby(self, user):
         with allure.step(f"Выбрали предмет: {user.hobbies}"):
-            browser.all('label.custom-control-label').element_by(have.text(user.hobbies)).click()
+            hobby_element = browser.all('label.custom-control-label').element_by(have.text(user.hobbies))
+            hobby_element.perform(command.js.scroll_into_view)
+            hobby_element.click()
 
     @allure.step("Загрузка изображения")
     def upload_picture(self, user):
@@ -68,8 +70,13 @@ class RegistrationForm:
     @allure.step("Выбор штата")
     def select_state(self, user):
         with allure.step(f"Выбрали штат: {user.state}"):
-            browser.element('#state').click()
-            browser.all('.css-26l3qy-menu div').element_by(have.exact_text(user.state)).click()
+            state_element = browser.element('#state')
+            state_element.perform(command.js.scroll_into_view)
+            state_element.click()
+
+            state_option = browser.all('.css-26l3qy-menu div').element_by(have.exact_text(user.state))
+            state_option.perform(command.js.scroll_into_view)
+            state_option.click()
 
     @allure.step("Выбор города")
     def select_city(self, user):

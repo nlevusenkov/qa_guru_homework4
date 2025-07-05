@@ -21,10 +21,12 @@ def setting_browser(request):
         options=options
     )
     browser.config.driver = driver
-    browser.config.driver.maximize_window()
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
 
 
     yield browser
     attach.add_screenshot(browser)
+    attach.add_logs(browser)
     attach.add_screenshot(browser)
     browser.quit()
