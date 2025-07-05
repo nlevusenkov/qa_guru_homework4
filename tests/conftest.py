@@ -1,7 +1,7 @@
 import pytest
 from selene import browser
 from selenium import webdriver
-
+from utils import attach
 
 @pytest.fixture(scope='function')
 def setting_browser(request):
@@ -23,6 +23,9 @@ def setting_browser(request):
     browser.config.driver = driver
     browser.config.driver.maximize_window()
 
-    yield browser
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_screenshot(browser)
 
+    yield browser
     browser.quit()
