@@ -6,6 +6,7 @@ from utils import attach
 @pytest.fixture(scope='function')
 def setting_browser(request):
     options = webdriver.ChromeOptions()
+    options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": "128.0",
